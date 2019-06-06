@@ -2,7 +2,6 @@
 
 > 自己是个渣渣，这个都弄不好  愁人，所以特此记下来  2019.6.5
 
-[TOC]
 
 ## 1.基础版本Mybatis
 
@@ -170,7 +169,7 @@ query查询的时候遇到的一些坑
 
 注意，这里为什么isDelete，createTime等为Null？  因为在ResultMap中没有进行定义
 
-韬哥的一种写法是， Base_Column_List里面不写as，然后返回里面写 resultType，如下
+大牛的一种写法是， Base_Column_List里面不写as，然后返回里面写 resultType，如下
  <resultMap id="BaseResultMap" type="com.shuidihuzhu.cs.biz.po.AgentPo">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="agent_id" jdbcType="BIGINT" property="agentId" />
