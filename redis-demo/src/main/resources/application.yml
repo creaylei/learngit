@@ -1,4 +1,5 @@
 spring:
+  # 数据库连接 
   datasource:
     username: root
     password: mysql123
@@ -14,8 +15,9 @@ spring:
     testOnBorrow: true
 
 
-
+# 这里配置mapper.xml的文件夹位置
 mybatis:
   mapper-locations: classpath:Mappers/*Mapper.xml
+  # 打开控制台输出sql
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
