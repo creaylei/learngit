@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    username: root
+    password: mysql123
+    url: jdbc:mysql://localhost:3306/dev
+    driver-class-name: com.mysql.jdbc.Driver
+
+  redis:
+    host: localhost
+    port: 6739
+    password:
+    maxTotal: 5
+    maxIdle: 5
+    testOnBorrow: true
+
+
+
+mybatis:
+  mapper-locations: classpath:Mappers/*Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

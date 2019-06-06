@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.UserDao">
+    <sql id="Base_Column_List">
+        id as id,
+        user_name as userName,
+        sex as sex,
+        age as age,
+        is_delete as isDelete,
+        create_time as createTime,
+        update_time as updateTime
+    </sql>
+
+
+    <resultMap id="BaseResultMap" type="com.example.demo.po.UserPo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="sex" jdbcType="TINYINT" property="sex"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+    </resultMap>
+
+<select id="queryByPrimary" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT *
+    FROM t_user where id = #{id}
+</select>
+
+    <insert id="addUserSelective" parameterType="com.example.demo.po.UserPo" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userName!=null">user_name,</if>
+            <if test="sex!=null">sex ,</if>
+            <if test="age !=null">age ,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userName!=null">#{userName},</if>
+            <if test="sex!=null"> #{sex},</if>
+            <if test="age !=null">#{age},</if>
+        </trim>
+    </insert>
+
+    <update id="updateUserSelective" parameterType="com.example.demo.po.UserPo">
+        UPDATE t_user
+        <set>
+            <if test="userName!=null">user_name = #{userName},</if>
+            <if test="sex!=null">sex = #{sex},</if>
+            <if test="age !=null">age = #{age},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+</mapper>
